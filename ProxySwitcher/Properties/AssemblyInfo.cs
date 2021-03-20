@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ProxySwitcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Proxy switcher for IE and windows")]
+[assembly: AssemblyDescription("This work uses RegistryMonitor, which is created by Thomas Freudenberg under The Code Project Open License (CPOL).")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ProxySwitcher")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2021")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Proxy Switcher")]
+[assembly: AssemblyCopyright("Created By Charles Sun under MIT")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
