@@ -31,7 +31,7 @@ namespace ProxySwitcher
         {
             get
             {
-                int proxyEnable = Convert.ToInt32(Registry.GetValue(REG_KEY_WININET, REG_NAME_PROXY_ENABLE, PROXY_DISABLE));
+                int proxyEnable = Convert.ToInt32(Registry.GetValue(REG_KEY_WININET, REG_NAME_PROXY_ENABLE, PROXY_DISABLE)); //TODO: get wrong reg value?
                 return PROXY_ENABLE == proxyEnable;
             }
             set
@@ -48,8 +48,8 @@ namespace ProxySwitcher
             if (!string.IsNullOrEmpty(proxyServer))
             {
                 string[] proxyServerContent = proxyServer.Split(':');
-                address = proxyServerContent[0];
-                port = proxyServerContent[1];
+                address = proxyServerContent[0] + ':' + proxyServerContent[1];
+                port = proxyServerContent[2];
             }
         }
 

@@ -32,12 +32,13 @@ namespace ProxySwitcher
 
         public FormMain()
         {
+            registry = new ProxyRegistry();
+            isProxyEnable = registry.ProxyEnable;
             InitializeComponent();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            registry = new ProxyRegistry();
             isProxyEnable = registry.ProxyEnable;
             registry.GetProxyServer(ref proxyAddress, ref proxyPort);
             registry.GetProxyOverride(ref proxyExceptions, ref bypassLocal);
@@ -88,10 +89,21 @@ namespace ProxySwitcher
             }
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Add a modal form to confirm exit or to_tray
+            var result = MessageBox.Show("Exit app?\n If No, the program will stay in the tray.", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) // To tray
+            {
+                WindowState = FormWindowState.Minimized;
+                e.Cancel = true;
+            }
+        }
+
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            monitor?.Stop();
-            monitor?.Dispose();
+                monitor?.Stop();
+                monitor?.Dispose();
         }
 
         #region Form controls
@@ -197,5 +209,6 @@ This work uses RegistryMonitor, which is created by Thomas Freudenberg under The
             menuSwitcher.Checked = isProxyEnable;
         }
         #endregion
+
     }
 }
